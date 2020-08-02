@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align: center;
+            color: aqua;
+        }
+        span{
+            border-collapse: collapse;
+            width: 80%;
+        }
+        table,td,th{
+            border: 1px solid darkmagenta;
+        }
+    </style>
+</head>
+<body>
+<span>添加员工</span>
+<form th:action="@{/emp/addEmp}" th:object="${emp}" method="post" enctype="multipart/form-data">
+<table align="center">
+    <tr>
+        <td>姓名:</td>
+        <td>
+            <input th:type="text" name="ename">
+        </td>
+        <td>年龄:</td>
+        <td>
+            <input th:type="text" name="age">
+        </td>
+        <td>头像:</td>
+        <td>
+            <input type="file" name="file">
+        </td>
+        <td>生日:</td>
+        <td>
+            <input type="date" name="birthday">
+        </td>
+    </tr>
+    <tr>
+        <td>所在部门:</td>
+        <td>
+            <select name="did">
+                <option>---请选择---</option>
+                <option th:each="dept:${depts}" th:text="${dept.dname}" th:value="${dept.did}">
+
+                </option>
+            </select>
+        </td>
+    </tr>
+
+</table>
+<input type="submit" value="提交">
+</form>
+</body>
+</html>
